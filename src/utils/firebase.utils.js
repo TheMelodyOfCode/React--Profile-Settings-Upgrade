@@ -15,13 +15,16 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAv7g5iENUmDyCcV2xJK_Q8b4saUaRdqKU",
-  authDomain: "profilesettings-396e5.firebaseapp.com",
-  projectId: "profilesettings-396e5",
-  storageBucket: "profilesettings-396e5.appspot.com",
-  messagingSenderId: "437035133332",
-  appId: "1:437035133332:web:ec0fc46c2711fd9af18781"
+
+  apiKey: "AIzaSyB3ptg6zyw3udTLDfP-BKofFtiEE02TSp4",
+  authDomain: "profile-settings-upgrade.firebaseapp.com",
+  projectId: "profile-settings-upgrade",
+  storageBucket: "profile-settings-upgrade.appspot.com",
+  messagingSenderId: "951662863357",
+  appId: "1:951662863357:web:9dff0d7938e6e094036f94"
+
 };
+
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
@@ -45,9 +48,10 @@ export const getSingleDocfromDB = async ( ) =>{
     const docSnap = await getDoc(userDocRef);
     if (docSnap.exists()) {
       return docSnap.data()
-    } else {
+    }  else {
       // doc.data() will be undefined in this case
-      return  {error: 'error',  message: `No user with the uid: "${uid}"` }
+      const error = {error: 'error', status: 'rejected', message: `No user with the uid: "${uid}"` }
+      return Promise.reject(error)
     }
 }
 
