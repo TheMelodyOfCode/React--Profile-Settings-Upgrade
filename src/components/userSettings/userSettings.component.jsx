@@ -2,7 +2,6 @@ import * as React from 'react'
 import {dequal} from 'dequal'
 
 import { useUser} from '../../context/userContext.context'
-
 import { updateUser } from '../../utils/helperFunctions.utils'
 
 const UserSettings =({userData})=>{
@@ -27,14 +26,6 @@ const UserSettings =({userData})=>{
       // ignor error
     })
   }
-
-  // function UserDataDisplay() {
-  //   const [{user}] = useUser()
-  //   return (           
-  //     <pre className="formItems__dataDisplay__text">{JSON.stringify(user, null, 2)}</pre>
-  //   )
-  // }
-  
 
     return (
     <section className="formItems">          
