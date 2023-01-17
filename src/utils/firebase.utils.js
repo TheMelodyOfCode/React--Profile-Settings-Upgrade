@@ -9,8 +9,8 @@ import {
     updateDoc,
     collection,
     writeBatch,
-    // query,
-    // getDocs,
+    query,
+    getDocs,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -39,27 +39,46 @@ export const db = getFirestore();
 const uid = 'uid01';
 const userDocRef = doc(db, "userData", uid)
 
-
-// ### GET  single documents from DB !! ###
-// #############################
-       
-export const getSingleDocfromDB = async ( ) =>{
-
-    const docSnap = await getDoc(userDocRef);
-    if (docSnap.exists()) {
-      return docSnap.data()
-    }  else {
-      // doc.data() will be undefined in this case
-      const error = {error: 'error', status: 'rejected', message: `No user with the uid: "${uid}"` }
-      return Promise.reject(error)
-    }
-}
-
 // ### UPDATE USER-PROFILE INFORMATION !! ### 
 // ##########################################
 
-export const UpdateUserDocinDB = async (profileInfo= {})=>{
+export const updateUserDocinDB = async (profileInfo= {})=>{
     await updateDoc(userDocRef, profileInfo);
+}
+
+// ### GET  single documents from DB !! ###
+// #############################
+
+export const getSingleDocfromDB = async ( ) =>{
+
+  const docSnap = await getDoc(userDocRef);
+  if (docSnap.exists()) {
+    return docSnap.data()
+  }  else {
+    // doc.data() will be undefined in this case
+    const error = {error: 'error', status: 'rejected', message: `No user with the uid: "${uid}"` }
+    return Promise.reject(error)
+  }
+}
+
+// ### GET all FILES from DB !! ###
+// #############################
+
+export const getAllItemsfromDB = async ()=>{
+  const collectionRef = collection(db, 'userData');
+  const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot) {
+    const itemsMap = querySnapshot.docs.reduce((acc, docSnapshot) =>{
+      const  items = docSnapshot.data();
+      return items;
+    }, {});
+    return itemsMap;
+  } else {
+    const error = {error: 'error', status: 'rejected', message: `Hoppala; , - Nothing found` }
+    return Promise.reject(error)
+  }
+
 }
 
 

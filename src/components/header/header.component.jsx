@@ -1,8 +1,8 @@
 
 const Header = ()=>{
     return (
-        <header class="header">
-            <h1 class="header__heading-1">Profile Settings</h1>
+        <header className="header">
+            <h1 className="header__heading-1">Profile Settings</h1>
         </header>
     )
 
