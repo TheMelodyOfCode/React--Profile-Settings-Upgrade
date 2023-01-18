@@ -18,7 +18,7 @@ const sleep = t => new Promise(resolve => setTimeout(resolve, t))
 const checkOfForbiddenWord = async (user, updates, signal) => {
   await sleep(1000) // simulate a wait period
   if (`${updates.username} ${updates.tagline} ${updates.bio}`.includes('badWord')) {
-    return Promise.reject({message: 'No, no , no! ,.. hat is a bad word !'})
+    return Promise.reject({message: 'No, no , no! ,.. that is a bad word !'})
   }
   return {...user, ...updates}
 }
