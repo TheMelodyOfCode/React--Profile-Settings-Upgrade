@@ -9,7 +9,7 @@
 >> Get userdata from firestore  
 >> Store data to localstorage  
 >> Update Username, Tagline & Biography  
->> Check if a bad word got entered in on of the form fields  
+>> Check if a bad word got entered in one of the form fields  
 
 #### Firebase
 > In the Utils Folder, you will find all files related to Firebase</br>
